@@ -4,7 +4,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Ask the user for their grade percentage
         Console.Write("Enter your grade percentage: ");
         int grade = int.Parse(Console.ReadLine());
 
@@ -32,34 +31,25 @@ class Program
             letter = "F";
         }
 
-        // Determine + or - sign
         string sign = "";
-        int lastDigit = grade % 10;
 
-        if (lastDigit >= 7)
+        // Only B, C, and D can have + or -
+        if (letter == "B" || letter == "C" || letter == "D")
         {
-            sign = "+";
-        }
-        else if (lastDigit < 3)
-        {
-            sign = "-";
-        }
+            int lastDigit = grade % 10;
 
-        // Handle special cases (no A+, F+, or F-)
-        if (letter == "A" && sign == "+")
-        {
-            sign = "";
-        }
-
-        if (letter == "F")
-        {
-            sign = "";
+            if (lastDigit >= 7)
+            {
+                sign = "+";
+            }
+            else if (lastDigit < 3)
+            {
+                sign = "-";
+            }
         }
 
-        // Print final grade
         Console.WriteLine($"Your letter grade is: {letter}{sign}");
 
-        // Check if the user passed
         if (grade >= 70)
         {
             Console.WriteLine("Congratulations! You passed the course.");
